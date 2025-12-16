@@ -1,0 +1,505 @@
+:root {
+    --brand-blue: #4f7fff; /* màu nút TÌM */
+    --brand-blue-dark: #1f2a48; /* màu header thanh search dính */
+}
+
+/* ====== GLOBAL ====== */
+.section-title {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 1.25rem 0;
+}
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+.rounded-5 {
+    border-radius: 1.5rem !important;
+}
+.shadow-soft {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* ==== SEARCH – (VER 2 - AGODA STYLE) ==== */
+
+/* 1. Card chính */
+.search-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 1rem !important;
+    border: none;
+}
+
+/* 2. Tabs chính (Khách sạn, Nhà...) */
+.search-card .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.search-card .nav-tabs .nav-link {
+    color: #555;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-bottom: 3px solid transparent;
+}
+
+.search-card .nav-tabs .nav-link.active {
+    color: var(--brand-blue);
+    background-color: transparent;
+    border-bottom: 3px solid var(--brand-blue);
+}
+
+/* 3. Pills (Chỗ ở qua đêm...) */
+.search-pills .nav-link {
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: #333;
+    background-color: #f0f2f5;
+    border: 1px solid transparent;
+}
+
+.search-pills .nav-link.active {
+    color: var(--brand-blue);
+    background-color: #eaf2ff;
+    border: 1px solid var(--brand-blue);
+}
+
+/* 4. Lưới Input (Chung) */
+.search-row {
+    display: grid;
+    gap: 12px;
+}
+
+/* Media query cho desktop: Chia 4 cột cho HotelSearchForm */
+@media (min-width: 992px) {
+    .search-row:has(> div:nth-child(4)) {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    }
+}
+
+/* 5. Tùy chỉnh Input (Chung) */
+.search-card .input-group {
+    background-color: #f0f2f5 !important;
+    height: 52px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+.search-card .input-group .form-control,
+.search-card .input-group .input-group-text {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+}
+.search-card .form-control::placeholder {
+    color: #9aa3af;
+}
+
+/* 6. Nút TÌM (Chung) */
+.btn-find {
+    height: 52px;
+    border-radius: 14px;
+    font-weight: 700;
+    background: var(--brand-blue);
+    border: none;
+}
+.btn-find:hover {
+    filter: brightness(0.95);
+}
+
+/* ====== (BỔ SUNG) CSS CHO SEARCHBOX - FLIGHT FORM ====== */
+
+/* 7. Input group kiểu mới (có label bên trên) */
+.input-group-vertical {
+    display: flex;
+    flex-direction: column;
+}
+.input-group-vertical label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #555;
+    margin-left: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Ghi đè style input, dùng chung style cũ */
+.input-group-custom-label {
+    height: 52px;
+    background-color: #f0f2f5 !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    cursor: pointer;
+}
+.input-group-custom-label .form-control,
+.input-group-custom-label .input-group-text {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+}
+.input-group-custom-label .form-control {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* 8. Grid Layout cho Form Chuyến bay */
+
+/* Hàng thông tin chuyến bay */
+.search-row-flight-main {
+    display: grid;
+    gap: 12px;
+    align-items: end;
+}
+/* Hàng thông tin khách sạn */
+.search-row-hotel-secondary {
+    display: grid;
+    gap: 12px;
+}
+/* Hàng thông tin khách */
+.search-row-guests-secondary {
+    display: grid;
+    gap: 12px;
+}
+/* Nút Swap */
+.swap-icon-container {
+    text-align: center;
+    margin-bottom: 8px;
+}
+.swap-icon-container .btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+/* Media query cho desktop */
+@media (min-width: 992px) {
+    .search-row-flight-main {
+        grid-template-columns: 2fr auto 2fr 1fr 1fr;
+    }
+    .search-row-hotel-secondary {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+    .search-row-guests-secondary {
+        grid-template-columns: 1fr 1fr 2fr;
+    }
+}
+
+/* Media query cho mobile (stack hết) */
+@media (max-width: 991px) {
+    .search-row-flight-main,
+    .search-row-hotel-secondary,
+    .search-row-guests-secondary {
+        grid-template-columns: 1fr;
+    }
+    .swap-icon-container {
+        order: -1;
+        margin-bottom: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+/* --- */
+
+/* ====== DESTINATION STRIP (AGODA STYLE: ẢNH TRÊN, CHỮ DƯỚI) ====== */
+.scroll-x {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+}
+.scroll-x::-webkit-scrollbar {
+    height: 8px;
+}
+.scroll-x::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 999px;
+}
+
+/* KHUNG CARD ĐIỂM ĐẾN */
+.dest-card {
+    min-width: 250px; /* Chiều rộng Agoda thường nhỏ hơn để fit nhiều card */
+    scroll-snap-align: start;
+    height: auto; /* Chiều cao tự động */
+    border-radius: 8px; 
+    overflow: hidden;
+    position: relative; 
+    cursor: pointer;
+    background-color: white; /* Nền trắng (Agoda style) */
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1); /* Shadow nhẹ */
+    transition: box-shadow 0.2s;
+    border: 1px solid #e0e0e0; /* Viền nhẹ */
+}
+.dest-card:hover {
+    transform: none; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ẢNH ĐIỂM ĐẾN */
+.dest-card-img {
+    height: 140px; /* Chiều cao ảnh cố định */
+    width: 100%;
+    object-fit: cover;
+    /* KHÔNG CÓ BORDER RADIUS Ở ĐÂY - Border nằm trên thẻ cha */
+}
+
+/* NỘI DUNG CHỮ */
+.dest-card-body {
+    padding: 10px 12px; /* Padding gọn gàng */
+    min-height: 80px; 
+}
+
+.dest-card .name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+    margin-top: 0; 
+    margin-bottom: 3px;
+    /* Loại bỏ text shadow */
+}
+.dest-card .meta {
+    color: #6c757d; 
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+/* Loại bỏ .dest-card-overlay vì không dùng overlay nữa */
+
+/* --- */
+
+/* ====== HOTEL CARD (ĐÃ TỐI ƯU HÓA CÂN CHỈNH) ====== */
+.hotel-card {
+    min-width: 280px; 
+    flex: 0 0 auto;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+}
+.hotel-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* CONTAINER ẢNH */
+.hotel-image-container {
+    position: relative;
+    height: 190px; 
+}
+
+.hotel-card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* BADGE XẾP HẠNG SAO (TINH CHỈNH FONT/PADDING) */
+.badge-score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #003580; 
+    color: #fff;
+    font-weight: 700;
+    border-radius: 4px; 
+    padding: 4px 8px; /* Giảm padding ngang */
+    font-size: 0.95rem; 
+    z-index: 10;
+}
+
+/* CHI TIẾT */
+.hotel-details {
+    padding: 12px 15px 15px 15px; /* Giảm padding trên và dưới để gọn */
+}
+.hotel-city-name {
+    font-size: 0.75rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+.hotel-name {
+    font-size: 1.15rem; 
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 4px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.hotel-address {
+    font-size: 0.8rem; 
+    color: #6c757d;
+    margin-bottom: 8px; /* Giảm margin bottom */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.hotel-price {
+    font-size: 0.9rem;
+    color: #495057;
+    font-weight: 600;
+}
+.price-value {
+    color: #cc2936; /* Màu đỏ Agoda */
+    font-weight: 700; /* Giảm độ đậm nhẹ */
+    font-size: 1.15rem; /* Giảm kích thước chữ giá */
+}
+
+/* --- */
+
+
+/* ====== STICKY SEARCH BAR ====== */
+.sticky-search {
+    position: sticky;
+    top: 66px;
+    z-index: 1030;
+    background: var(--brand-blue-dark);
+    padding: 12px 0;
+}
+.sticky-search .form-control,
+.sticky-search .input-group-text {
+    height: 44px;
+    border-radius: 10px;
+}
+.sticky-search .btn-primary {
+    background: var(--brand-blue);
+    border: none;
+    font-weight: 700;
+}
+
+/* ====== FOOTER ====== */
+.footer-dark {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+.footer-dark a {
+    color: #dbeafe;
+    text-decoration: none;
+}
+
+/* ====== (BỔ SUNG) CSS CHO HELP PAGE ====== */
+
+/* 1. Banner Xanh */
+.help-header {
+    background-color: var(--brand-blue); /* Dùng màu xanh chính */
+    padding: 4rem 0;
+}
+/* ====== (BỔ SUNG) CSS CHO NỘI DUNG TĨNH (HELP PAGE) ====== */
+
+.help-static-content {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem !important; /* Giống .accordion-item */
+    line-height: 1.6;
+}
+
+.help-static-content h4,
+.help-static-content h5 {
+    color: #333;
+}
+.btn-help-category {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    color: #333;
+    font-weight: 600;
+    min-width: 180px;
+    transition: all 0.2s ease;
+}
+
+.btn-help-category:hover {
+    background: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Sidebar (Nav Pills) */
+.help-sidebar {
+    background-color: #f8f9fa;
+    border-radius: 1rem;
+}
+
+.help-sidebar .nav-link {
+    color: #333;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.help-sidebar .nav-link.active {
+    background-color: var(--brand-blue); /* Dùng màu xanh chính */
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.help-sidebar .nav-link:not(.active):hover {
+    background-color: #e9ecef;
+    border-radius: 0.5rem;
+}
+
+/* 3. Box CTA (Liên hệ) */
+.cta-box {
+    background-color: var(--brand-blue-dark); /* Dùng màu xanh đậm */
+    color: #fff;
+    border-radius: 1rem;
+}
+
+.cta-box .btn-light {
+    font-weight: 600;
+}
+
+/* 4. Tùy chỉnh Accordion */
+.accordion-item {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem !important;
+    margin-bottom: 1rem;
+}
+
+.accordion-item:first-of-type,
+.accordion-item:last-of-type {
+    border-radius: 0.5rem !important;
+}
+
+.accordion-header {
+    border-bottom: 0;
+}
+
+.accordion-button {
+    font-weight: 600;
+    color: #333;
+    border-radius: 0.5rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f0f2f5;
+    box-shadow: none;
+    color: var(--brand-blue);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+/* =========================
+   PAGE TRANSITION (ANTI FLICKER)
+========================= */
+
+.page-wrapper {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.page-transition {
+    animation: fadeSlideIn 0.25s ease-out both;
+    will-change: opacity, transform;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,56 @@
+/* * File CSS cho thanh tìm kiếm dính (sticky).
+ * Thanh này sẽ có nền màu xanh đậm giống ảnh 'image_e9b807.png'
+ */
+
+.sticky-search-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Màu xanh đậm giống Agoda */
+  background-color: #1a2b49; 
+  padding: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1020; /* Nằm trên nội dung, dưới modal */
+
+  /* Mặc định ẩn (trượt lên trên) */
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Lớp 'visible' sẽ làm nó trượt xuống */
+.sticky-search-header.visible {
+  transform: translateY(0);
+}
+
+/* Căn chỉnh các input cho vừa container */
+.sticky-search-header .container {
+  max-width: 1100px; /* Giữ độ rộng giống trang */
+}
+
+/* * Cần style lại các input để có nền trắng 
+ * trên nền xanh đậm.
+ */
+.sticky-search-header .form-control,
+.sticky-search-header .input-group-text,
+.sticky-search-header .react-datepicker-wrapper .form-control {
+  background-color: #ffffff !important;
+  border: none !important;
+  height: 48px;
+  font-weight: 500;
+}
+
+.sticky-search-header .input-group {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sticky-search-header .input-group-text {
+  background-color: #ffffff;
+}
+
+.sticky-search-header .btn-primary {
+  height: 48px;
+  font-weight: bold;
+}

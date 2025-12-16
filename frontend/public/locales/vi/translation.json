@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "accommodation": "Chỗ ở",
+    "activities": "Hoạt động",
+    "flights": "Vé máy bay",
+    "deals": "Phiếu giảm giá",
+    "login": "Đăng nhập",
+    "register": "Tạo tài khoản",
+    "greeting": "Chào, {name}",
+    "myBookings": "Lịch sử đặt phòng",
+    "logout": "Đăng xuất",
+    "lang": {
+      "vi": "Tiếng Việt",
+      "en": "English"
+    }
+  }
+}

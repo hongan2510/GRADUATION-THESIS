@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "accommodation": "Stays",
+    "activities": "Activities",
+    "flights": "Flights",
+    "deals": "Vouchers",
+    "login": "Login",
+    "register": "Create account",
+    "greeting": "Hi, {name}",
+    "myBookings": "My Bookings",
+    "logout": "Logout",
+    "lang": {
+      "vi": "Tiếng Việt",
+      "en": "English"
+    }
+  }
+}
